@@ -1,5 +1,3 @@
-
-
 def search1(plist, needle):
     """
     :param plist:
@@ -29,8 +27,10 @@ def search2(plist, needle):
                 low = middle + 1
     return None
 
+
 def search(plist, needle):
     search2(plist, needle)
+
 
 if __name__ == '__main__':
     print search([1, 2, 3, 6, 8, 9], 8)
