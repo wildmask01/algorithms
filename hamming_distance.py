@@ -18,4 +18,4 @@ test_cases = [{'x': 1, 'y': 4}]
 if __name__ == '__main__':
     sol = Solution()
     for test_case in test_cases:
-        print sol.hammingDistance(test_case['x'], test_case['y'])
+        print(sol.hammingDistance(test_case['x'], test_case['y']))

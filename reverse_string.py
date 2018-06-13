@@ -19,4 +19,8 @@ test_cases = ['hello', '', 'hello world']
 if __name__ == '__main__':
     sol = Solution()
     for test_case in test_cases:
-        print sol.reverseString(test_case)
+        print(sol.reverseString(test_case))
+
+
+# https://www.cnblogs.com/taceywong/p/8045127.html 6种方法
+

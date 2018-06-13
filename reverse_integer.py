@@ -36,4 +36,4 @@ class Solution(object):
 if __name__ == '__main__':
     sol = Solution()
     res = sol.reverse(1563847412)
-    print res
+    print(res)

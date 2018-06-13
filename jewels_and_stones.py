@@ -19,4 +19,4 @@ test_cases = [{'J': 'aA', 'S': 'aAAbbbb'}, {'J': 'z', 'S': 'ZZ'}]
 if __name__ == '__main__':
     sol = Solution()
     for test_case in test_cases:
-        print sol.numJewelsInStones(test_case['J'], test_case['S'])
+        print(sol.numJewelsInStones(test_case['J'], test_case['S']))

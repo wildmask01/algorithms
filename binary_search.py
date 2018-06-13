@@ -33,4 +33,4 @@ def search(plist, needle):
 
 
 if __name__ == '__main__':
-    print search([1, 2, 3, 6, 8, 9], 8)
+    print(search([1, 2, 3, 6, 8, 9], 8))
