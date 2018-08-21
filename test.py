@@ -329,4 +329,282 @@ import heapq
 #
 # print(longestPalindrome("abb"))
 
-int('1-')
+# int('1-')
+
+# def threeSumClosest(nums, target):
+#     """
+#     :type nums: List[int]
+#     :type target: int
+#     :rtype: int
+#     """
+#     nums.sort()
+#     closest_sum = sum(nums[0:3])
+#     dif = abs(target - closest_sum)
+#
+#     nums_len = len(nums)
+#     for i in range(0, nums_len - 2):
+#         if i > 0 and nums[i] == nums[i - 1]:
+#             continue
+#         j = i + 1
+#         k = nums_len - 1
+#         while j < k:
+#             tmp_sum = nums[i] + nums[j] + nums[k]
+#             tmp_dif = abs(tmp_sum - target)
+#             if tmp_dif < dif:
+#                 closest_sum = tmp_sum
+#             if tmp_sum == target:
+#                 break
+#             elif tmp_sum < target:
+#                 j += 1
+#             else:
+#                 k -= 1
+#     return closest_sum
+#
+# threeSumClosest([0,2,1,-3], 1)
+
+
+# def twoSum(nums, target):
+#     """
+#     :type nums: List[int]
+#     :type target: int
+#     :rtype: List[int]
+#     """
+#
+#     l = 0  # left
+#     r = len(nums) - 1  # right
+#     nums.sort()
+#
+#     solutions = []
+#
+#     while l < r:
+#         if nums[l] + nums[r] == target:
+#             solutions.append([l, r])
+#             while l < r and nums[l + 1] == nums[l]:
+#                 l += 1
+#             while l < r and nums[r - 1] == nums[r]:
+#                 r -= 1
+#             l += 1
+#             r -= 1
+#         elif nums[l] + nums[r] < target:
+#             l += 1
+#         else:
+#             r -= 1
+#
+#     return solutions[0]
+#
+#
+# twoSum([3,2,4], 6)
+
+# l = ['(', '{', '[']
+# r = [')', '}', ']']
+#
+# map_dict = zip(l, r)
+#
+# print(dict(map_dict))
+
+# import dis
+#
+# def func(a,b):
+#     a,b=b,a
+#     print(a,b)
+#
+# a=10
+# b=20
+# func(a,b)
+# dis.dis(func)
+
+
+# def divide(dividend, divisor):
+#     """
+#     :type dividend: int
+#     :type divisor: int
+#     :rtype: int
+#     """
+#     sign = ''
+#     if (dividend > 0 and divisor < 0) or (dividend < 0 and divisor > 0):
+#         sign = '-'
+#
+#     dividend = abs(dividend)
+#     divisor = abs(divisor)
+#
+#     lst = []
+#     while divisor <= dividend:
+#         lst.append(divisor)
+#         divisor += divisor
+#
+#     quotient = 0
+#     pow_value = len(lst) - 1
+#
+#     for index, divisor in enumerate(lst[::-1]):
+#         if dividend >= divisor:
+#             quotient += pow(2, pow_value - index)
+#             dividend -= divisor
+#
+#     return int(sign + str(quotient - 1))
+#
+#
+# divide(-10, -5)
+
+#
+# def nextPermutation(nums):
+#     """
+#     :type nums: List[int]
+#     :rtype: void Do not return anything, modify nums in-place instead.
+#     """
+#     num_len = len(nums)
+#     if not nums or len(nums) == 1:
+#         return nums
+#
+#     for index in range(len(nums) - 1, 0, -1):
+#         if nums[index] > nums[index - 1]:
+#             break
+#
+#     if index - 1 == 0 and nums[0] > nums[1]:
+#         return nums.sort()
+#
+#     for k in range(len(nums) - 1, 0, -1):
+#         if nums[k] > nums[index - 1]:
+#             break
+#
+#     nums[k], nums[index - 1] = nums[index - 1], nums[k]
+#     end = (num_len - 1 - index) // 2 + 1
+#
+#     for k in range(0, end):
+#         nums[index + k], nums[num_len - k] = nums[num_len - k], nums[index + k]
+#
+#     return nums
+#
+# nextPermutation([1,4,3, 2, 3, 3])
+
+
+
+#
+# def searchRange(nums, target):
+#     """
+#     :type nums: List[int]
+#     :type target: int
+#     :rtype: List[int]
+#     """
+#     if not nums:
+#         return [-1, -1]
+#
+#     def find_edge(edge_type):
+#         lo, hi = 0, len(nums) - 1
+#         while lo <= hi:
+#             mid = (lo + hi) // 2
+#             if nums[mid] == target:
+#                 if edge_type == 'low':
+#                     if mid > 0 and nums[mid - 1] == target:
+#                         hi = mid - 1
+#                     else:
+#                         return mid
+#                 else:
+#                     if mid < len(nums) - 1 and nums[mid + 1] == target:
+#                         low = mid + 1
+#                     else:
+#                         return mid
+#             elif nums[mid] > target:
+#                 hi = mid - 1
+#             else:
+#                 lo = mid + 1
+#         return -1
+#
+#     low_edge = find_edge('low')
+#     high_edge = find_edge('high')
+#
+#     return [low_edge, high_edge]
+#
+#
+# searchRange([2, 2], 2)
+
+
+#
+# from pyhive import hive
+# conn = hive.Connection(host="39.106.251.31", port=10000, username="root", database='hivetest')
+# cursor = conn.cursor()
+# cursor.execute("select * from employee")
+# for result in cursor.fetchall():
+#     print(result)
+
+
+
+# from functools import wraps
+#
+#
+# def memo(fn):
+#     cache = {}
+#     miss = object()
+#
+#     @wraps(fn)
+#     def wrapper(*args):
+#         result = cache.get(args, miss)
+#         if result is miss:
+#             result = fn(*args)
+#             cache[args] = result
+#         return result
+#
+#     return wrapper
+#
+#
+# @memo
+# def fib(n):
+#     if n < 2:
+#         return n
+#     return fib(n - 1) + fib(n - 2)
+#
+# print(fib(3))
+
+
+
+
+#
+# order_list = [
+#     {'order_id': 1, 'price': 100, 'date': '2018-01-01'},
+#     {'order_id': 2, 'price': 200, 'date': '2018-01-02'},
+#     {'order_id': 3, 'price': 300, 'date': '2018-01-05'},
+#     {'order_id': 4, 'price': 400, 'date': '2018-01-01'},
+# ]
+#
+# import pandas as pd
+#
+# df = pd.DataFrame(order_list)
+# df['month'] = df['date'].apply(lambda x : str(x)[5:7])
+# print(df['price'].values.tolist())
+# print([1, 2])
+
+# import pandas as pd
+# import numpy as np
+# df = pd.DataFrame(np.arange(16).reshape((4,4)), index=['one', 'two', 'three', 'four'], columns=['a', 'b', 'c', 'd'])
+#
+# # df = df.apply(lambda x: x.max() + x.min(), axis=1)  # 1 是对行聚合
+# # df = df.apply(lambda x: x.max() + x.min(), axis=0)  # 0 是对列聚合， 默认为0
+#
+# df['e'] = df.apply(lambda x: x['a'] + x['b'], axis=1)
+# print(df)
+# print(df[df['price'] > 200])
+
+
+
+
+# class Date:
+#     _formats = {
+#         'ymd': '{d.year}-{d.month}-{d.day}',
+#         'mdy': '{d.month}/{d.day}/{d.year}',
+#         'dmy': '{d.day}/{d.month}/{d.year}'
+#     }
+#     def __init__(self, year, month, day):
+#         self.year = year
+#         self.month = month
+#         self.day = day
+#
+#     def __format__(self, code):
+#         if code == '':
+#             code = 'ymd'
+#         fmt = self._formats[code]
+#         return fmt.format(d=self)
+#
+#
+# d = Date(2012, 12, 21)
+# print(format(d))
+# print(format(d, 'ymd'))
+# print(format(d, 'mdy'))

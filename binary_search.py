@@ -13,6 +13,9 @@ def search1(plist, needle):
 
 
 def search2(plist, needle):
+
+    if not plist:
+        return -1
     low = 0
     high = len(plist) - 1
 
@@ -25,7 +28,7 @@ def search2(plist, needle):
                 high = middle - 1
             else:
                 low = middle + 1
-    return None
+    return -1
 
 
 def search(plist, needle):
@@ -33,4 +36,6 @@ def search(plist, needle):
 
 
 if __name__ == '__main__':
+    print(search([1, 2, 3, 6, 8, 9], 8))
+    print(search([1, 2, 3, 6, 8, 9], 8))
     print(search([1, 2, 3, 6, 8, 9], 8))
